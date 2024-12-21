@@ -1,14 +1,21 @@
 package com.Filin.ViewModel;
 
 import com.Filin.Model.Person;
+import lombok.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Builder
 public class PersonViewModel {
+    @Getter
     private final RoleViewModel roleViewModel = new RoleViewModel();
+    @Getter
     private static int COUNT_LIST;
     private static ArrayList<Person> persons;
     private static final String[] columnNames = {
@@ -36,7 +43,7 @@ public class PersonViewModel {
             ;
 
         }
-        System.out.println(roleViewModel.getRoles());
+//        System.out.println(roleViewModel.getRoles());
         JTable table = new JTable(data, columnNames);
         return table;
     }

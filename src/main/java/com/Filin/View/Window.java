@@ -33,6 +33,17 @@ public class Window {
         return constraints;
     }
 
+
+    static GridBagConstraints getConstraintsWhitoutFill(int gridx, int gridy, int gridwidth, int gridheight) {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = gridx;
+        constraints.gridy = gridy;
+        constraints.gridwidth =gridwidth;
+        constraints.gridheight = gridheight;
+        constraints.fill = GridBagConstraints.NONE;
+        return constraints;
+    }
+
     public static JFrame getFrame() {
         int width = 800;
         int height = 600;

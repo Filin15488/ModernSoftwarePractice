@@ -49,4 +49,13 @@ public class RoleViewModel {
         return null;
     }
 
+    public int getIdByNameRole(String nameRole){
+        for (Role role : roles) {
+            if (role.getNameRole().equals(nameRole)) {
+                return role.getId();
+            }
+        }
+        return -1;
+    }
+
 }
