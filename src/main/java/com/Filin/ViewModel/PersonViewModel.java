@@ -8,10 +8,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class PersonViewModel {
-    private RoleViewModel roleViewModel = new RoleViewModel();
+    private final RoleViewModel roleViewModel = new RoleViewModel();
     private static int COUNT_LIST;
     private static ArrayList<Person> persons;
-    private static String[] columnNames = {
+    private static final String[] columnNames = {
             "Код",
             "Фамилия",
             "Имя",
@@ -46,13 +46,14 @@ public class PersonViewModel {
     {
         persons = new ArrayList<>();
 
-        persons.add(new Person(
-                ++COUNT_LIST,
-                1,
-                "Иван",
-                "Иванов",
-                new GregorianCalendar(1980,02,28)
-        ));
+        persons.add(Person.builder()
+                        .id(++COUNT_LIST)
+                        .RoleId(1)
+                        .FirstName("Иванов")
+                        .LastName("Иванов")
+                        .birthday(new GregorianCalendar(1980, 2, 28))
+                .build());
+
         persons.add(new Person(
                 ++COUNT_LIST,
                 2,

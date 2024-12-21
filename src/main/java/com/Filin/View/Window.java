@@ -1,10 +1,18 @@
 package com.Filin.View;
 
+import lombok.Getter;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Window {
+    @Getter
     public JFrame frame = getFrame();
+
+    private static Toolkit toolkit = Toolkit.getDefaultToolkit();
+    @Getter
+    private static Dimension screenSize = toolkit.getScreenSize();
+
 
     public Boolean getVisible() {
         return frame.isVisible();
@@ -30,12 +38,11 @@ public class Window {
         int height = 600;
         JFrame frame = new JFrame();
 
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = toolkit.getScreenSize();
         frame.setBounds((screenSize.width - width) / 2, (screenSize.height - height) / 2, width, height);
 //        frame.setVisible(true);
         return frame;
 
     }
+
 
 }

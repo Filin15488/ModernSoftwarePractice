@@ -1,12 +1,19 @@
 package com.Filin.ViewModel;
 
 import com.Filin.Model.Role;
+import lombok.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class RoleViewModel {
-    private static ArrayList<Role> roles;
+    @Getter
+    private ArrayList<Role> roles;
+    @Getter
     private int COUNT_ROLE;
     private static String[] columnNames = {
             "Код",
@@ -21,7 +28,7 @@ public class RoleViewModel {
 
     }
 
-    public static JTable getTable(){
+    public JTable getTable(){
         String[][]data = new String[roles.size()][columnNames.length];
         for (int i = 0; i < roles.size(); i++) {
             data[i][0] = String.valueOf(roles.get(i).getId());
@@ -42,11 +49,4 @@ public class RoleViewModel {
         return null;
     }
 
-    public ArrayList<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(ArrayList<Role> roles) {
-        this.roles = roles;
-    }
 }
