@@ -4,6 +4,7 @@ package com.Filin.View;
 import com.Filin.Model.Person;
 import com.Filin.ViewModel.PersonViewModel;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,9 @@ public class WindowEmployee extends Window {
     static JPanel panel = new JPanel();
     private ControlPanel controlPanel = new ControlPanel();
     @Getter
-    private PersonViewModel personViewModel = new PersonViewModel();
+    @Setter
+    private PersonViewModel personViewModel = PersonViewModel.getInstance();
+//    private PersonViewModel personViewModel = new PersonViewModel();
     private JTable personTable = personViewModel.getTable();
 
     private WindowEditPerson editWindow = new WindowEditPerson(this);
@@ -24,6 +27,7 @@ public class WindowEmployee extends Window {
     {
         frame.setTitle("Сотрудники");
         panel.setLayout(new GridBagLayout());
+//        System.out.println(personViewModel);
     }
 
 //    Рабочий конвертатор в json:
@@ -40,7 +44,7 @@ public class WindowEmployee extends Window {
 
     {
         controlPanel.getAdd().addActionListener(e -> {
-//            System.out.println(personViewModel.getPersons());
+            addPersonWindow.updateData();
             addPersonWindow.setVisible(true);
             addPersonWindow.draw();
 
@@ -50,6 +54,7 @@ public class WindowEmployee extends Window {
 
             if (selectedRow != -1) {
                 int roleId = Integer.parseInt((String) personTable.getValueAt(selectedRow, 0));
+//                System.out.println(personTable);
                 personViewModel.getPersons().removeIf(role -> role.getId() == roleId);
 
                 // Перерисовка таблицы
@@ -74,7 +79,7 @@ public class WindowEmployee extends Window {
 
                 if (personToEdit != null) {
 //                    System.out.println(personToEdit);
-
+                    editWindow.updateData();
                     editWindow.setPersonToEdit(personToEdit);
                     editWindow.draw();
                     editWindow.setVisible(true);

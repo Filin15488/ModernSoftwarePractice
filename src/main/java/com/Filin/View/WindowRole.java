@@ -13,6 +13,7 @@ public class WindowRole extends Window {
     private JPanel panel = new JPanel(); // Убрали static
     private ControlPanel controlPanel = new ControlPanel();
     @Getter
+    @Setter
     private RoleViewModel roleViewModel = new RoleViewModel(); // Убрали static
     private WindowNewRole addRoleWindow = new WindowNewRole(this);
     private JTable roleTable = roleViewModel.getTable();

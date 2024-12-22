@@ -28,6 +28,16 @@ public class WindowNewPerson extends Window {
 
     private WindowEmployee parentWindow; // ссылка на родительское окно
 
+    public void updateData(){
+        roleViewModel = parentWindow.getPersonViewModel().getRoleViewModel();
+        rolesJComboBox.removeAllItems();
+        for (Role role : roleViewModel.getRoles()) {
+
+            rolesJComboBox.addItem(role.getNameRole());
+//            System.out.println(role.getNameRole());
+        }
+    }
+
      public WindowNewPerson(WindowEmployee parentWindow) {
          this.parentWindow = parentWindow;
          roleViewModel = parentWindow.getPersonViewModel().getRoleViewModel();

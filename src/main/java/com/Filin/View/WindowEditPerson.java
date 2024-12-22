@@ -120,4 +120,13 @@ public class WindowEditPerson extends Window{
         Date date = personToEdit.getBirthday().getTime();
         dateChooser.setDate(date);
     }
+    public void updateData(){
+        roleViewModel = parentWindow.getPersonViewModel().getRoleViewModel();
+        rolesJComboBox.removeAllItems();
+        for (Role role : roleViewModel.getRoles()) {
+
+            rolesJComboBox.addItem(role.getNameRole());
+//            System.out.println(role.getNameRole());
+        }
+    }
 }
