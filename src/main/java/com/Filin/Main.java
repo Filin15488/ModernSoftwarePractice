@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public class Main extends Window {
 //    private PersonViewModel personViewModel = new PersonViewModel();
     private PersonViewModel personViewModel = PersonViewModel.getInstance();
-    private RoleViewModel roleViewModel = new RoleViewModel();
+    private RoleViewModel roleViewModel = RoleViewModel.getInstance();
     private static WindowEmployee windowEmployee = new WindowEmployee();
     private static WindowRole windowRole = new WindowRole();
     public static void main(String[] args) {

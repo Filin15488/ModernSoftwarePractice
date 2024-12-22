@@ -5,6 +5,7 @@ import com.Filin.ViewModel.RoleViewModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class WindowNewRole extends Window {
@@ -32,12 +33,19 @@ public class WindowNewRole extends Window {
 
             // Добавляем новую роль с текстом из поля jobTitle
             roles.add(Role.builder()
-                    .id(roles.size() + 1)
+                    .id((roles.get(roles.size() - 1)).getId() + 1)
                     .NameRole(jobTitle.getText()) // Берем текст из поля
                     .build());
             roleViewModel.setCOUNT_ROLE(roles.size());
 
-//            System.out.println(roleViewModel);
+
+//            записываем добавленную роль в json файл
+
+            try {
+                parentWindow.getRoleViewModel().saveRolesToFile();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
 
 
             parentWindow.refreshTable(); // Обновляем главное окно

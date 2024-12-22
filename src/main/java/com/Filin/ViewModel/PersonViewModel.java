@@ -16,7 +16,7 @@ import java.util.stream.IntStream;
 public class PersonViewModel {
     @Getter
     @Setter
-    private RoleViewModel roleViewModel = new RoleViewModel();
+    private RoleViewModel roleViewModel = RoleViewModel.getInstance();
     @Getter
     private static int COUNT_LIST;
     private static ArrayList<Person> persons = new ArrayList<>();

@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class WindowRole extends Window {
 
@@ -14,7 +15,7 @@ public class WindowRole extends Window {
     private ControlPanel controlPanel = new ControlPanel();
     @Getter
     @Setter
-    private RoleViewModel roleViewModel = new RoleViewModel(); // Убрали static
+    private RoleViewModel roleViewModel = RoleViewModel.getInstance(); // Убрали static
     private WindowNewRole addRoleWindow = new WindowNewRole(this);
     private JTable roleTable = roleViewModel.getTable();
 
@@ -33,6 +34,14 @@ public class WindowRole extends Window {
             if (selectedRow != -1) {
                 int roleId = Integer.parseInt((String) roleTable.getValueAt(selectedRow, 0));
                 roleViewModel.getRoles().removeIf(role -> role.getId() == roleId);
+
+                //            записываем добавленную роль в json файл
+
+                try {
+                    roleViewModel.saveRolesToFile();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
 
                 // Перерисовка таблицы
                 refreshTable();

@@ -4,6 +4,7 @@ import com.Filin.Model.Role;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class WindowEditRole extends Window {
     private JPanel contentPane = new JPanel();
@@ -25,6 +26,15 @@ public class WindowEditRole extends Window {
 
         saveButton.addActionListener(e -> {
             roleToEdit.setNameRole(jobTitle.getText());
+
+            //            записываем добавленную роль в json файл
+
+            try {
+                parentWindow.getRoleViewModel().saveRolesToFile();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
             parentWindow.refreshTable(); // Обновление таблицы в главном окне
             frame.dispose();             // Закрытие окна
         });
