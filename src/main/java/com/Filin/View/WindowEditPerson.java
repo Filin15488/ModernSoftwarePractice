@@ -8,6 +8,7 @@ import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -76,6 +77,12 @@ public class WindowEditPerson extends Window{
                 // Если роль изменилась, обновляем roleId
                 int selectedRoleId = roleViewModel.getIdByNameRole(selectedRoleName);
                 personToEdit.setRoleId(selectedRoleId);
+            }
+
+            try {
+                personViewModel.savePersonsToFole();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
 
             // Обновление таблицы в родительском окне

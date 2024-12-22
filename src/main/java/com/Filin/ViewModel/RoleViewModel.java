@@ -46,7 +46,7 @@ public class RoleViewModel {
         try {
 //            roles = new ArrayList<>();
             roles = loadRolesFromFile();
-            System.out.println(roles);
+//            System.out.println(roles);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

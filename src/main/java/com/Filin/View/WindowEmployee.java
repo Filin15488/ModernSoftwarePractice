@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import javax.swing.JScrollPane;
 
 
@@ -57,6 +58,11 @@ public class WindowEmployee extends Window {
 //                System.out.println(personTable);
                 personViewModel.getPersons().removeIf(role -> role.getId() == roleId);
 
+                try {
+                    personViewModel.savePersonsToFole();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 // Перерисовка таблицы
                 refreshTable();
             } else {

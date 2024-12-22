@@ -8,6 +8,7 @@ import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -75,7 +76,7 @@ public class WindowNewPerson extends Window {
              gregorianCalendar.setTime(selectedDate);
 
              Person newPerson = Person.builder()
-                     .id(persons.size()+1)
+                     .id(persons.get(persons.size() - 1).getId() + 1)
                      .RoleId(rolesJComboBox.getSelectedIndex() + 1)
                      .LastName(lastNameField.getText())
                      .FirstName(firstNameField.getText())
@@ -83,6 +84,11 @@ public class WindowNewPerson extends Window {
                      .build();
 //             System.out.println(newPerson);
              persons.add(newPerson);
+             try {
+                 personViewModel.savePersonsToFole();
+             } catch (IOException ex) {
+                 throw new RuntimeException(ex);
+             }
 //             System.out.println(persons);
 
 

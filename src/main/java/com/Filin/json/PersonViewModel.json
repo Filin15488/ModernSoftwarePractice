@@ -1,0 +1,25 @@
+[ {
+  "id" : 1,
+  "birthday" : 323038800000,
+  "lastName" : "Иванов",
+  "firstName" : "Иванов",
+  "roleId" : 1
+}, {
+  "id" : 2,
+  "birthday" : 356558400000,
+  "lastName" : "Петров",
+  "firstName" : "Петр",
+  "roleId" : 2
+}, {
+  "id" : 3,
+  "birthday" : 390254400000,
+  "lastName" : "Викторович",
+  "firstName" : "Виктор",
+  "roleId" : 3
+}, {
+  "id" : 4,
+  "birthday" : 424036800000,
+  "lastName" : "Сидоров",
+  "firstName" : "Сидор",
+  "roleId" : 2
+} ]
